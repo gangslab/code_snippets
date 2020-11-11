@@ -28,5 +28,24 @@ cmds.skinCluster("leftEyeballSkinCluster", query=True, influence=True)
 # Result: [u'facialRoot', u'leftEye'] # 
 ```
 
+## get Polygon mesh info (vertex count, triangle count ....)
+```python
+cmds.polyEvaluate("AT_JH_eyeball_left", v=True)
+# Result: 130 # 
+cmds.polyEvaluate("AT_JH_eyeball_left")
+# Result: {'edge': 272,
+ 'edgeComponent': 0,
+ 'face': 144,
+ 'faceComponent': 0,
+ 'shell': 1,
+ 'triangle': 256,
+ 'triangleComponent': 0,
+ 'uvComponent': 0,
+ 'uvShell': 0,
+ 'uvcoord': 146,
+ 'vertex': 130,
+ 'vertexComponent': 0} #
+ ```
+ 
 markdown syntax
 https://github.github.com/gfm/
