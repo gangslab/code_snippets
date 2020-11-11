@@ -22,5 +22,11 @@ print weight
 [0.8059321898658935, 0.19406781013410648]
 ```
 
+## get skinned joints
+```python
+cmds.skinCluster("leftEyeballSkinCluster", query=True, influence=True)
+# Result: [u'facialRoot', u'leftEye'] # 
+```
+
 markdown syntax
 https://github.github.com/gfm/
