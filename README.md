@@ -1,6 +1,6 @@
 # code_snippets
 
-# Maya API Code Snippets
+# Maya Code Snippets
 ## How to get DAG Path from name
 ```c++
 MString nodeName( "nodeName" );
@@ -47,5 +47,16 @@ cmds.polyEvaluate("AT_JH_eyeball_left")
  'vertexComponent': 0} #
  ```
  
+## move skinned joint
+```python
+cmds.skinCluster("HeadSkinCluster", e=True, mjm=False)
+```
+ 
+## get UV parameter from vertex number
+```mel
+polyListComponentConversion -fv -tuv AT_JH_Head.vtx[658];
+polyEditUV -q AT_JH_Head.map[558];
+```
+
 markdown syntax
 https://github.github.com/gfm/
