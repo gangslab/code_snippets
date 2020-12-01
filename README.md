@@ -58,5 +58,36 @@ polyListComponentConversion -fv -tuv AT_JH_Head.vtx[658];
 polyEditUV -q AT_JH_Head.map[558];
 ```
 
+## useful python code
+```python
+def getDagPathFromName(in_name):
+    selector = OpenMaya.MSelectionList()
+    OpenMaya.MGlobal.getSelectionListByName(in_name, selector)
+    path = OpenMaya.MDagPath()
+    selector.getDagPath(0, path)
+    return path
+
+
+def getNodeFromName(in_name):
+    selector = OpenMaya.MSelectionList()
+    OpenMaya.MGlobal.getSelectionListByName(in_name, selector)
+    node = OpenMaya.MObject()
+    selector.getDependNode(0, node)
+    return node
+
+def testSetAttrWeight():
+    VertexNb = cmds.polyEvaluate("AT_JH_Head", v=1) - 1
+    weight = cmds.getAttr('{0}.weightList[0].weights[0:{1}]'.format("LeftUpperEyelashWire", VertexNb))
+
+    #   for blendshape
+    #VertexNb = cmds.polyEvaluate(Mesh, v=1)
+    #weight = cmds.getAttr('{0}.inputTarget[0].baseWeights[0:{1}]'.format(blendShapeNode, VertexNb))
+
+    for i in range(len(weight)):
+        weight[i] = 0
+    cmds.setAttr('{0}.weightList[0].weights[0:{1}]'.format("LeftUpperEyelashWire", VertexNb), *weight, size=len(weight))
+```
+
+
 markdown syntax
 https://github.github.com/gfm/
