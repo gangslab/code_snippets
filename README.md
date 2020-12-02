@@ -88,6 +88,20 @@ def testSetAttrWeight():
   for i in range(len(weight)):
       weight[i] = 0
   cmds.setAttr('{0}.weightList[0].weights[0:{1}]'.format("LeftUpperEyelashWire", VertexNb), *weight, size=len(weight))
+
+def getSelectedObjectSkinnedJoints():
+  objects = cmds.ls(sl=True);
+  cmds.select(cl=True)
+  for obj in objects:
+    skinClusterStr = 'findRelatedSkinCluster("' + obj + '")'
+    skinCluster = mel.eval(skinClusterStr)
+    print(skinCluster)
+    if (skinCluster is not None):
+      cmds.select(cmds.skinCluster(skinCluster, query=True, inf=True), add=True)
+
+    else:
+        print("-----> no skin on " + obj + "!")
+
 ```
 
 
